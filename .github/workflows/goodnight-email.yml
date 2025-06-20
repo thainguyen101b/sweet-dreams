@@ -17,7 +17,7 @@ jobs:
 
       - name: Generate email content
         run: |
-          node .scripts/generateContent.js
+          node ./scripts/generateContent.js
 
       - name: Send Email
         uses: dawidd6/action-send-mail@v3
