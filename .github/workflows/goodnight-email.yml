@@ -1,0 +1,32 @@
+name: Goodnight Email
+
+on:
+  schedule:
+    - cron: '0 21 * * *'
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Generate email content
+        run: |
+          node .scripts/generateContent.js
+
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Chúc ngủ ngon nha anh yêu 💌"
+          body: file://email.txt
+          to: nguyenthai2598@gmail.com
+          from: thainguyen101b@gmail.com
