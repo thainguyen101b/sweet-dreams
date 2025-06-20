@@ -2,7 +2,7 @@ name: Goodnight Email
 
 on:
   schedule:
-  - cron: "40 8 * * *"
+  - cron: "43 18 * * *"
 
 jobs:
   send-email:
