@@ -1,8 +1,6 @@
 name: Goodnight Email
 
-on:
-  schedule:
-    - cron: '35 10 * * *'
+on: [push]
 
 jobs:
   send-email:
